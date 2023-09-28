@@ -4,18 +4,10 @@ import axios from "axios";
 
 export default function App() {
   const [books, setBooks] = useState([]);
-  const [currentBook, setCurrentBook] = useState({
-    book_name: "Sample Book",
-    book_description: "Sample Author",
-    author: "author",
-  });
 
   useEffect(() => {
     async function getBooks() {
-      const randomBook = Math.random() * 10 - 2;
-      const response = await axios.get(
-        `http://localhost:8080/books/${randomBook}`
-      );
+      const response = await axios.get(`http://localhost:8080/books`);
       setBooks(response.data);
     }
     getBooks();
